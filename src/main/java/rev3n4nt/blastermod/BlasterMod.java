@@ -33,7 +33,8 @@ public class BlasterMod {
         public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
             event.getRegistry().registerAll(
                 new Item(new Item.Properties().group(ItemGroup.MISC)).setRegistryName(MODID, "blaster")
-                // new ItemMusket().setRegistryName(MusketMod.MODID, "musket")
+                // new ItemMusket().setRegistryName(MusketMod.MODID, "blaster")
+                // new ItemBlaster(IItemTier tier, float p_i48488_2_, Item.Properties builder).setRegistryName(BlasterMod.MODID, "blaster")
             );
         }
 
