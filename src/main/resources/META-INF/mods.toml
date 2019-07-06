@@ -1,0 +1,16 @@
+modLoader="javafml"
+loaderVersion="[25,)"
+issueTrackerURL="https://github.com/ewewukek/mc-musketmod/issues"
+[[mods]]
+modId="lrblastermod"
+version="0.1"
+displayName="Blaster Mod"
+#updateJSONURL=""
+displayURL="https://github.com/rev3n4nt/lrblastermod"
+#logoFile="blaster.png"
+authors="rev3n4nt"
+description='''
+Mod adding Blaster item from Lode Runner game series.
+Temporary disables blocks in blaster range.
+After blaster's effect worn off, blocks appear back with melting effect.
+'''

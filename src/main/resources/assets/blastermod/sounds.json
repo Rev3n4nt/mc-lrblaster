@@ -1,0 +1,12 @@
+{
+  "blaster_ready": {
+    "sounds": [
+      "blastermod:blaster_ready"
+    ]
+  },
+  "blaster_fire": {
+    "sounds": [
+      "blastermod:blaster_fire"
+    ]
+  }
+}
