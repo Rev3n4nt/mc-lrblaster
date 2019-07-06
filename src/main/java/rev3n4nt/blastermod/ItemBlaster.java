@@ -47,19 +47,22 @@ import net.minecraft.item.Item;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemUseContext;
 import net.minecraft.item.ItemStack;
+// import net.minecraft.item.HoeItem;
 
 public class ItemBlaster extends TieredItem {
+// public class ItemBlaster extends HoeItem {
    private final float speed;
    protected static final Map<Block, BlockState> BLASTER_LOOKUP = Maps.newHashMap(ImmutableMap.of(Blocks.GRASS_BLOCK, Blocks.FARMLAND.getDefaultState(), Blocks.GRASS_PATH, Blocks.FARMLAND.getDefaultState(), Blocks.DIRT, Blocks.FARMLAND.getDefaultState(), Blocks.COARSE_DIRT, Blocks.DIRT.getDefaultState()));
 
-   @ObjectHolder(BlasterMod.MODID + ":blaster_ready")
-   public static SoundEvent SOUND_blaster_READY;
+   // @ObjectHolder(BlasterMod.MODID + ":blaster_ready")
+   // public static SoundEvent SOUND_BLASTER_READY;
 
-   @ObjectHolder(BlasterMod.MODID + ":blaster_fire")
-   public static SoundEvent SOUND_blaster_FIRE;
+   // @ObjectHolder(BlasterMod.MODID + ":blaster_fire")
+   // public static SoundEvent SOUND_BLASTER_FIRE;
    
    public ItemBlaster(IItemTier tier, float p_i48488_2_, Item.Properties builder) {
       super(tier, builder);
+      // parent
       this.speed = p_i48488_2_;
    }
 

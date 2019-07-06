@@ -1,12 +1,12 @@
 modLoader="javafml"
 loaderVersion="[25,)"
-issueTrackerURL="https://github.com/ewewukek/mc-musketmod/issues"
+issueTrackerURL="https://github.com/ewewukek/mc-lrblaster/issues"
 [[mods]]
-modId="lrblastermod"
+modId="blastermod"
 version="0.1"
 displayName="Blaster Mod"
 #updateJSONURL=""
-displayURL="https://github.com/rev3n4nt/lrblastermod"
+displayURL="https://github.com/rev3n4nt/mc-lrblaster"
 #logoFile="blaster.png"
 authors="rev3n4nt"
 description='''
