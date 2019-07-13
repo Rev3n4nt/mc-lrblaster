@@ -1,144 +1,93 @@
 package rev3n4nt.blastermod;
-// Blastermod
 
-//from HoeItem:
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
+// import com.google.common.collect.ImmutableMap;
+// import com.google.common.collect.Maps;
 // import com.google.common.collect.Multimap;
-import java.util.Map;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
+// import java.util.Map;
+// import net.minecraft.block.Block;
+// import net.minecraft.block.BlockState;
+// import net.minecraft.block.Blocks;
 // import net.minecraft.entity.LivingEntity;
-// import net.minecraft.entity.SharedMonsterAttributes;
-// import net.minecraft.entity.ai.attributes.AttributeModifier;
 // import net.minecraft.entity.player.PlayerEntity;
 // import net.minecraft.inventory.EquipmentSlotType;
-// import net.minecraft.util.ActionResultType;
-// import net.minecraft.util.Direction;
-// import net.minecraft.util.SoundCategory;
-// import net.minecraft.util.SoundEvents;
-// import net.minecraft.util.math.BlockPos;
-// import net.minecraft.world.World;
-// from musket mod:
-// import net.minecraft.entity.LivingEntity;
-// import net.minecraft.entity.player.PlayerEntity;
-// import net.minecraft.item.Item;
-// import net.minecraft.item.ItemGroup;
-// import net.minecraft.item.ItemStack;
-// import net.minecraft.item.UseAction;
-// import net.minecraft.nbt.CompoundNBT;
-// import net.minecraft.particles.ParticleTypes;
-// import net.minecraft.util.ActionResult;
-// import net.minecraft.util.ActionResultType;
-// import net.minecraft.util.Hand;
-// import net.minecraft.util.ResourceLocation;
-// import net.minecraft.util.SoundEvent;
-// import net.minecraft.util.math.MathHelper;
-// import net.minecraft.util.math.Vec3d;
-// import net.minecraft.world.World;
-// import net.minecraftforge.registries.ObjectHolder;
-
-//from HoeItem as Item:
-// net.minecraft.item;
-// import net.minecraft.item.TieredItem;
+import net.minecraft.world.World;
+import net.minecraftforge.registries.ObjectHolder;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
-// import net.minecraft.item.Items;
-import net.minecraft.item.IItemTier;
-// import net.minecraft.item.ItemUseContext;
-// import net.minecraft.item.ItemStack;
-// import net.minecraft.item.ItemTier;
-import net.minecraft.item.HoeItem;
+import net.minecraft.item.ItemUseContext;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.BlockPos;
 
+// import net.minecraft.item.HoeItem;
+// import net.minecraft.item.ShovelItem;;
 
-public class ItemBlaster extends HoeItem {
+public class ItemBlaster extends Item {
 
-   // protected static final Map<Block, BlockState> BLASTER_LOOKUP = Maps.newHashMap(ImmutableMap.of(Blocks.GRASS_BLOCK, Blocks.FARMLAND.getDefaultState(), Blocks.GRASS_PATH, Blocks.FARMLAND.getDefaultState(), Blocks.DIRT, Blocks.FARMLAND.getDefaultState(), Blocks.COARSE_DIRT, Blocks.DIRT.getDefaultState()));
+   @ObjectHolder(BlasterMod.MODID + ":blaster_ready")
+   public static SoundEvent SOUND_BLASTER_READY;
 
-   private final float speed;
+   @ObjectHolder(BlasterMod.MODID + ":blaster_fire")
+   public static SoundEvent SOUND_BLASTER_FIRE;
 
-   public ItemBlaster(IItemTier tier, float p_i48488_2_, Item.Properties builder) {
-      super(tier, p_i48488_2_, builder);
-      this.speed = p_i48488_2_;
+   // private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.CLAY, Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.PODZOL, Blocks.FARMLAND, Blocks.GRASS_BLOCK, Blocks.GRAVEL, Blocks.MYCELIUM, Blocks.SAND, Blocks.RED_SAND, Blocks.SNOW_BLOCK, Blocks.SNOW, Blocks.SOUL_SAND, Blocks.GRASS_PATH, Blocks.WHITE_CONCRETE_POWDER, Blocks.ORANGE_CONCRETE_POWDER, Blocks.MAGENTA_CONCRETE_POWDER, Blocks.LIGHT_BLUE_CONCRETE_POWDER, Blocks.YELLOW_CONCRETE_POWDER, Blocks.LIME_CONCRETE_POWDER, Blocks.PINK_CONCRETE_POWDER, Blocks.GRAY_CONCRETE_POWDER, Blocks.LIGHT_GRAY_CONCRETE_POWDER, Blocks.CYAN_CONCRETE_POWDER, Blocks.PURPLE_CONCRETE_POWDER, Blocks.BLUE_CONCRETE_POWDER, Blocks.BROWN_CONCRETE_POWDER, Blocks.GREEN_CONCRETE_POWDER, Blocks.RED_CONCRETE_POWDER, Blocks.BLACK_CONCRETE_POWDER);
+   // protected static final Map<Block, BlockState> field_195955_e = Maps.newHashMap(ImmutableMap.of(Blocks.GRASS_BLOCK, Blocks.GRASS_PATH.getDefaultState()));
+
+   public ItemBlaster( Item.Properties builder){
+      super(builder);
    }
-
-   // public ItemBlaster(Item.Properties props) { super(tier, speed, props);}
-
-
-   }
-
-// public class ItemBlaster extends HoeItem {
-// public class ItemBlaster extends TieredItem {
-// public class ItemBlaster extends HoeItem {
-   // private final float speed;
-   // protected static final Map<Block, BlockState> BLASTER_LOOKUP = Maps.newHashMap(ImmutableMap.of(Blocks.GRASS_BLOCK, Blocks.FARMLAND.getDefaultState(), Blocks.GRASS_PATH, Blocks.FARMLAND.getDefaultState(), Blocks.DIRT, Blocks.FARMLAND.getDefaultState(), Blocks.COARSE_DIRT, Blocks.DIRT.getDefaultState()));
-
-   // @ObjectHolder(BlasterMod.MODID + ":blaster_ready")
-   // public static SoundEvent SOUND_BLASTER_READY;
-
-   // @ObjectHolder(BlasterMod.MODID + ":blaster_fire")
-   // public static SoundEvent SOUND_BLASTER_FIRE;
-   
-   
-   // public ItemBlaster(IItemTier tier, float p_i48488_2_, Item.Properties builder) {
-   //    super(tier, builder);
-   //    // parent
-   //    this.speed = p_i48488_2_;
-   // }
 
    /**
     * Called when this item is used when targetting a Block
     */
-//     @Override
-//    public ActionResultType onItemUse(ItemUseContext context) {
-//       World world = context.getWorld();
-//       BlockPos blockpos = context.getPos();
-//       int hook = net.minecraftforge.event.ForgeEventFactory.onHoeUse(context);
-//       if (hook != 0) return hook > 0 ? ActionResultType.SUCCESS : ActionResultType.FAIL;
-//       if (context.getFace() != Direction.DOWN && world.isAirBlock(blockpos.up())) {
-//          BlockState blockstate = BLASTER_LOOKUP.get(world.getBlockState(blockpos).getBlock());
-//          if (blockstate != null) {
-//             PlayerEntity playerentity = context.getPlayer();
-//             world.playSound(playerentity, blockpos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
-//             if (!world.isRemote) {
-//                world.setBlockState(blockpos, blockstate, 11);
-//                if (playerentity != null) {
-//                   context.getItem().damageItem(1, playerentity, (p_220043_1_) -> {
-//                      p_220043_1_.sendBreakAnimation(context.getHand());
-//                   });
-//                }
-//             }
+    @Override
+    public ActionResultType onItemUse(ItemUseContext context) {
 
-//             return ActionResultType.SUCCESS;
-//          }
-//       }
+      World world = context.getWorld();
+      BlockPos blockpos = context.getPos();
 
-//       return ActionResultType.PASS;
-//    }
+// TODO : use TileEntity, timer on block;
+// look how to create TileEntity, put into scanned block
+// serialize \ deserialize
+// parameters: blockstate, timer
 
-//    /**
-//     * Current implementations of this method in child classes do not use the entry argument beside ev. They just raise
-//     * the damage on the stack.
-//     */
-//     @Override
-//    public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-//       stack.damageItem(1, attacker, (p_220042_0_) -> {
-//          p_220042_0_.sendBreakAnimation(EquipmentSlotType.MAINHAND);
-//       });
-//       return true;
-//    }
+      if (!world.isRemote) {
+         world.removeBlock(blockpos, false);
+         // TODO : check if lower block exist & not air
+         // if(block != null){
+            world.removeBlock(blockpos.down(), false);
 
-//    /**
-//     * Gets a map of item attribute modifiers, used by ItemSword to increase hit damage.
-//     */
-//     @Override
-//    public Multimap<String, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot) {
-//       Multimap<String, AttributeModifier> multimap = super.getAttributeModifiers(equipmentSlot);
-//       if (equipmentSlot == EquipmentSlotType.MAINHAND) {
-//          multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", 0.0D, AttributeModifier.Operation.ADDITION));
-//          multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", (double)this.speed, AttributeModifier.Operation.ADDITION));
-//       }
+            // world.removeBlock(blockpos.offset(front), false);
 
-//       return multimap;
-//    }
-// }
+            world.removeBlock(blockpos.north(), false);
+            world.removeBlock(blockpos.east(), false);
+            world.removeBlock(blockpos.north().east(), false);
+            
+            world.removeBlock(blockpos.north().down(), false);
+            world.removeBlock(blockpos.east().down(), false);
+            world.removeBlock(blockpos.north().east().down(), false);
+         // }
+      }
+      PlayerEntity player = context.getPlayer();
+
+      player.playSound(SOUND_BLASTER_FIRE, 0.9f, 1);
+
+      //    BlockState blockstate = HOE_LOOKUP.get(world.getBlockState(blockpos).getBlock());
+      //    if (blockstate != null) {
+      //       PlayerEntity playerentity = context.getPlayer();
+      //       world.playSound(playerentity, blockpos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
+      //       if (!world.isRemote) {
+      //          world.setBlockState(blockpos, blockstate, 11);
+      //          if (playerentity != null) {
+      //             context.getItem().damageItem(1, playerentity, (p_220043_1_) -> {
+      //                p_220043_1_.sendBreakAnimation(context.getHand());
+      //             });
+      //          }
+      //       }
+
+      //       return ActionResultType.SUCCESS;
+      //    }
+      // }
+      return ActionResultType.SUCCESS;
+   }
+}

@@ -1,15 +1,15 @@
 {
   "type": "crafting_shaped",
   "pattern": [
-    "B",
+    "D",
     "S"
   ],
   "key": {
-    "B": {
-      "item": "item:dirt"
+    "D": {
+      "item": "minecraft:dirt"
     },
     "S": {
-      "item": "item:stick"
+      "item": "minecraft:stick"
     }
   },
   "result": {
